@@ -1,0 +1,139 @@
+/* Reused from full MotorHub: short page transitions and subtle hover states. */
+.btn,
+.login-btn,
+.signup-btn,
+.logout-btn {
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+.btn:active {
+  transform: scale(0.985);
+}
+.vehicle-card {
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+.vehicle-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+}
+.vehicle-image img {
+  transition: transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.vehicle-card:hover .vehicle-image img {
+  transform: scale(1.025);
+}
+
+@keyframes page-appear {
+  from {
+    opacity: 0.7;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* The router captures outgoing and incoming content together; the header stays fixed. */
+.site-content {
+  view-transition-name: page-content;
+}
+.navbar {
+  view-transition-name: site-navigation;
+}
+.footer {
+  view-transition-name: site-footer;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-group(page-content) {
+  animation-duration: 240ms;
+  animation-timing-function: cubic-bezier(0.22, 0.7, 0.25, 1);
+}
+::view-transition-old(page-content) {
+  animation: page-out 140ms ease-out both;
+  mix-blend-mode: normal;
+}
+::view-transition-new(page-content) {
+  animation: page-in 240ms cubic-bezier(0.22, 0.7, 0.25, 1) both;
+  mix-blend-mode: normal;
+}
+::view-transition-group(site-navigation),
+::view-transition-group(site-footer) {
+  animation-duration: 0s;
+}
+::view-transition-old(site-navigation),
+::view-transition-new(site-navigation),
+::view-transition-old(site-footer),
+::view-transition-new(site-footer) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+.workspace {
+  animation: none;
+}
+@keyframes page-out {
+  to {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@supports not (view-transition-name: page-content) {
+  .site-content {
+    animation: page-appear 0.2s ease-out;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+  .site-content {
+    view-transition-name: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within,
+  html {
+    scroll-behavior: auto !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+  ::view-transition-old(root),
+  ::view-transition-new(root),
+  ::view-transition-group(*),
+  ::view-transition-image-pair(*) {
+    animation: none !important;
+  }
+  .lightbox-canvas img {
+    will-change: auto;
+  }
+}

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 200" width="1400" height="200">
+  <defs>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#E10600;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#BC0500;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Left: MH Emblem -->
+  <path d="M40 160 L120 32 L240 146 L360 32 L440 160" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M260 160 L360 32 L440 160 L300 160 L260 160Z" fill="url(#redGrad)"/>
+  <path d="M60 160 L160 32 L240 160 L120 160 L60 160Z" fill="#FFFFFF"/>
+  <path d="M80 20 L160 4 L280 16" fill="none" stroke="#E10600" stroke-width="4"/>
+  
+  <!-- Right: Text -->
+  <text x="520" y="75" font-family="Arial Black, Gadget, sans-serif" font-size="100" font-weight="900" fill="#FFFFFF" letter-spacing="-2">Motor</text>
+  <text x="1020" y="75" font-family="Arial Black, Gadget, sans-serif" font-size="100" font-weight="900" fill="url(#redGrad)" letter-spacing="-2">Hub</text>
+  
+  <!-- Tagline -->
+  <text x="520" y="130" font-family="Arial, sans-serif" font-size="28" font-weight="800" fill="#A1AAB5" letter-spacing="8">DRIVE BETTER</text>
+</svg>
