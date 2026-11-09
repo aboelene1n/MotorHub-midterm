@@ -67,7 +67,8 @@ These fictional owners and all twelve cars come from the full MotorHub project. 
 | 2009 Chevrolet Optra     | Rent    | Used      |      3 |
 | 2020 Hyundai Accent      | Rent    | Used      |      3 |
 
-There are six Sale and six Rent listings, including two zero-mileage New cars for Sale and two for Rent. Every listing has three local photographs. Prices/specifications are fictional project examples; stock images illustrate the model. Credits are in PHOTO_CREDITS.md.
+There are six Sale and six Rent listings, including two zero-mileage New cars for Sale and two for Rent. Every listing has three local photographs. Prices/specifications are fictional project examples; stock images illustrate the model.
+
 
 ## Architecture
 
