@@ -14,6 +14,9 @@ npm run backend
 npm run frontend
 ```
 
+
+
+
 Open http://localhost:5173. The normal frontend command uses build-and-preview startup on fixed port 5173, with API/upload proxying. For hot-reload editing, stop it and use npm run frontend:dev. After source edits, restart npm run frontend to rebuild. To share the interface, forward 5173 while keeping both servers running.
 
 ## Included features
