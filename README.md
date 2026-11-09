@@ -4,22 +4,8 @@ A React, Express and MongoDB vehicle marketplace. Browse cars for sale or rent, 
 
 ## Run
 
-Requires Node.js 22.12+ and MongoDB Atlas or a configured MongoDB replica set. Listing updates/deletion use transactions. Both apps use ports 5000 and 5173: stop the full project before starting this midterm copy.
-
-For a fresh extracted copy:
-
-```powershell
+# Installation
 npm run install:all
-Copy-Item backend/.env.example backend/.env
-Copy-Item frontend/.env.example frontend/.env
-node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"
-```
-
-Preserve existing environment files on an already configured installation. In private backend/.env, set MONGO_URI to a separate **MotorHubMidterm** database, set JWT_SECRET to your own random value, and set DEMO_PASSWORD to at least eight characters for the two prepared owners. Keep VITE_API_URL=/api. Credentials are never included in source or documentation.
-
-```powershell
-# Once, or to safely add missing prepared records
-npm run seed:demo
 
 # Terminal 1
 npm run backend
@@ -28,7 +14,7 @@ npm run backend
 npm run frontend
 ```
 
-Open http://localhost:5173. The normal frontend command uses the full project's build-and-preview startup on fixed port 5173, with API/upload proxying. For hot-reload editing, stop it and use npm run frontend:dev. After source edits, restart npm run frontend to rebuild. To share the interface, forward 5173 while keeping both servers running.
+Open http://localhost:5173. The normal frontend command uses build-and-preview startup on fixed port 5173, with API/upload proxying. For hot-reload editing, stop it and use npm run frontend:dev. After source edits, restart npm run frontend to rebuild. To share the interface, forward 5173 while keeping both servers running.
 
 ## Included features
 
@@ -36,12 +22,12 @@ Open http://localhost:5173. The normal frontend command uses the full project's 
 - Sale and rental browsing; text search, governorate dropdowns, price, transmission and fuel filters.
 - Vehicle details, a selectable photo gallery, seller contact links and New/Used condition.
 - Authenticated image uploads and owner-only create/edit/delete through My listings.
-- The full project's existing driving video, Pause/Play control, reduced-motion/data-saving fallback, real MotorHub logo and locally served original font.
-- Twelve prepared listings and two named owner accounts, reused from the full project. No admin account is created.
+-  driving video, Pause/Play control, reduced-motion/data-saving fallback, real MotorHub logo and locally served original font.
+- Twelve prepared listings and two named owner accounts. No admin account is created.
 
 Rentals are advertised listings: contact the owner to discuss dates. Online booking workflows, favorites, checkout/payments, notifications and an admin interface are outside this midterm submission.
 
-Navigation reuses the full project’s short page transitions, subtle card/button hover effects, scroll restoration and reduced-motion handling. Unsupported browsers keep ordinary navigation; no extra loading screen or artificial delay is introduced.
+Navigation uses  short page transitions, subtle card/button hover effects, scroll restoration and reduced-motion handling. Unsupported browsers keep ordinary navigation; no extra loading screen or artificial delay is introduced.
 
 ## Prepared accounts and inventory
 
@@ -50,7 +36,7 @@ Navigation reuses the full project’s short page transitions, subtle card/butto
 | Ahmed Hassan | ahmed.hassan@motorhub.example | see DEMO_PASSWORD |
 | Mohamed Adel | mohamed.adel@motorhub.example | see DEMO_PASSWORD |
 
-These fictional owners and all twelve cars come from the full MotorHub project. The seed preserves its existing records, listing edits, passwords and unrelated accounts when repeated. It uses fixed IDs and ownership keys, refuses conflicting identities, and refuses to seed a database without “Midterm” in its name. The midterm and full project therefore remain separate databases.
+These fictional owners and fictional twelve cars. The seed preserves its existing records, listing edits, passwords and unrelated accounts when repeated. It uses fixed IDs and ownership keys, refuses conflicting identities, and refuses to seed a database without “Midterm” in its name. The midterm and full project therefore remain separate databases.
 
 | Car                      | Listing | Condition | Photos |
 | ------------------------ | ------- | --------- | -----: |
@@ -67,8 +53,7 @@ These fictional owners and all twelve cars come from the full MotorHub project. 
 | 2009 Chevrolet Optra     | Rent    | Used      |      3 |
 | 2020 Hyundai Accent      | Rent    | Used      |      3 |
 
-There are six Sale and six Rent listings, including two zero-mileage New cars for Sale and two for Rent. Every listing has three local photographs. Prices/specifications are fictional project examples; stock images illustrate the model.
-
+There are six Sale and six Rent listings, including two zero-mileage New cars for Sale and two for Rent. Every listing has three local photographs. Prices/specifications are fictional project examples; stock images illustrate the model. 
 
 ## Architecture
 
@@ -79,7 +64,7 @@ flowchart LR
     B --> D[Local uploaded images]
 ```
 
-The listing form and Buy/Rent filters reuse the full project’s shared 27-governorate list. Existing city names such as New Cairo and Sheikh Zayed map to Cairo and Giza when filtering or editing. The server validates new location values using the same shared data.
+The listing form and Buy/Rent filters use 27-governorate list. Existing city names such as New Cairo and Sheikh Zayed map to Cairo and Giza when filtering or editing. The server validates new location values using the same shared data.
 
 React renders the screens and submits form/search requests. Express validates input, authenticates users, checks listing ownership and returns JSON. Mongoose reads/writes the User and Vehicle collections. Passwords are hashed with bcrypt; bearer tokens are kept in localStorage in this midterm version. Uploads are stored under backend/uploads and need persistent storage when hosted.
 
@@ -87,7 +72,7 @@ React renders the screens and submits form/search requests. Express validates in
 
 Screenshots were taken from the updated midterm with an isolated test database.
 
-![Homepage with the reused driving video](docs/screenshots/home.png)
+![Homepage with driving video](docs/screenshots/home.png)
 
 ![Sale listings and search filters](docs/screenshots/browse.png)
 
@@ -120,7 +105,7 @@ The updated midterm is also checked in Chrome through register → photo upload 
 | Criterion                        | Evidence                                                                                       |
 | -------------------------------- | ---------------------------------------------------------------------------------------------- |
 | Matching colors; clean/simple UI | Consistent MotorHub design, small navigation and clear forms                                   |
-| Images and videos                | Three photos per prepared car, uploaded photos and the reused driving video                    |
+| Images and videos                | Three photos per prepared car, uploaded photos and the driving video                      |
 | Navigation links and layouts     | Home sections, browse grids, split details, authentication cards, listing form and My listings |
 | React frontend                   | frontend/src pages, components and AuthContext                                                 |
 | Express server                   | backend/app.js, controllers and routes                                                         |
